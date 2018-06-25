@@ -7,7 +7,7 @@ if sys.version_info < (3, 5):
     raise Exception('Python versions < 3.5 are not supported.')
 
 REQUIRES = (
-    'marshmallow>=2.0.0',
+    'marshmallow>=2.1.0',
 )
 
 # Retrieve version information from _version.py
