@@ -1,4 +1,4 @@
-from ._version import __version__
+from ._version import __version__  # noqa
 from .convert import fields_for_namedtuple
 from .schema import NamedTupleSchema
 

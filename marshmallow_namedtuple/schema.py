@@ -12,7 +12,12 @@ class NamedTupleSchemaOpts(ma.SchemaOpts):
 
 class NamedTupleSchemaMeta(ma.schema.SchemaMeta):
     @classmethod
-    def get_declared_fields(mcs, klass, cls_fields, inherited_fields, dict_cls):
+    def get_declared_fields(
+            mcs,
+            klass,
+            cls_fields,
+            inherited_fields,
+            dict_cls):
         opts = klass.opts
         base_fields = super(NamedTupleSchemaMeta, mcs).get_declared_fields(
             klass, cls_fields, inherited_fields, dict_cls)

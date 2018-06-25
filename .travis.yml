@@ -7,7 +7,7 @@ python:
   - "3.5"
 
 env:
-  - MARSHMALLOW_VERSION="==2.0.0"
+  - MARSHMALLOW_VERSION=">2.0,<3.0"
   - MARSHMALLOW_VERSION=""
 
 before_install:
@@ -16,7 +16,7 @@ before_install:
 install:
   - travis_retry pip install -U .
   - travis_retry pip install -r dev-requirements.txt
-  - travis_retry pip install -U marshmallow"$MARSHMALLOW_VERSION" --pre
+  - travis_retry pip install -U "marshmallow$MARSHMALLOW_VERSION" --pre
 
 script:
   - pip list

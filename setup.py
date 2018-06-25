@@ -1,5 +1,6 @@
-from setuptools import setup, find_packages
 import sys
+
+from setuptools import find_packages, setup
 
 
 if sys.version_info < (3, 5):
@@ -13,7 +14,8 @@ REQUIRES = (
 __version__ = None
 exec(open('marshmallow_namedtuple/_version.py', 'rt').read())
 
-SHORT_DESCRIPTION = 'Python 3.5+ typing.NamedTuple integration with the marshmallow (de)serialization library.'
+SHORT_DESCRIPTION = 'Python 3.5+ typing.NamedTuple integration with the ' \
+                    'marshmallow (de)serialization library.'
 LONG_DESCRIPTION = open('README.rst', 'rt').read()
 CLASSIFIERS = [
     'Intended Audience :: Developers',
@@ -41,5 +43,5 @@ setup(
     test_suite='tests',
     project_urls={
         'Bug Reports': 'https://github.com/gwax/marshmallow-namedtuple/issues',
-    }
+    },
 )

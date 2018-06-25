@@ -1,7 +1,7 @@
 import datetime as dt
 import decimal
-import uuid
 import typing as t
+import uuid
 
 import marshmallow.fields as f
 
@@ -70,7 +70,8 @@ def fields_for_namedtuple(
         if key in namedtuple._field_defaults:
             field_kwargs['missing'] = namedtuple._field_defaults[key]
 
-        field = base_fields.get(key) or generate_field(typ, field_kwargs=field_kwargs)
+        field = base_fields.get(key) or \
+            generate_field(typ, field_kwargs=field_kwargs)
         if field:
             result[key] = field
     return result
