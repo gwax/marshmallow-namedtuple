@@ -16,5 +16,6 @@ install:
   - travis_retry pip install -U marshmallow"$MARSHMALLOW_VERSION" --pre
 
 script:
+  - pip list
   - pytest
   - flake8 .
