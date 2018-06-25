@@ -35,4 +35,8 @@ class NamedTupleSchema(with_metaclass(NamedTupleSchemaMeta, ma.Schema)):
 
     @ma.post_dump
     def clear_optional(self, data):
-        return {k: v for k, v in data.items() if v is not None}
+        return {
+            k: v for k, v in data.items() if
+            v is not None or
+            self.opts.namedtuple._field_defaults.get(k) is not None
+        }

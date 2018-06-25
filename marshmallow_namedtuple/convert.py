@@ -25,7 +25,12 @@ def generics_field(typ, field_kwargs):
     if typ.__origin__ is t.Union:
         if len(typ.__args__) == 2 and NoneType in typ.__args__:
             # Optional[...]
-            field_kwargs = {**field_kwargs, 'requied': False, 'allow_none': True, 'missing': None}
+            field_kwargs = {
+                'allow_none': True,
+                'missing': None,
+                **field_kwargs,
+                'required': False,
+            }
             [newtyp] = [t for t in typ.__args__ if t is not NoneType]
             return generate_field(newtyp, field_kwargs=field_kwargs)
     elif typ.__origin__ is t.List:
@@ -61,7 +66,11 @@ def fields_for_namedtuple(
         if exclude and key in exclude:
             continue
 
-        field = base_fields.get(key) or generate_field(typ)
+        field_kwargs = {'required': True}
+        if key in namedtuple._field_defaults:
+            field_kwargs['missing'] = namedtuple._field_defaults[key]
+
+        field = base_fields.get(key) or generate_field(typ, field_kwargs=field_kwargs)
         if field:
             result[key] = field
     return result

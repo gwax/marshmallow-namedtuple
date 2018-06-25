@@ -66,7 +66,7 @@ def test_dict_field():
     assert schema.dump(Model({'c': 5})).data == {'a': {'c': 5}}
 
 
-def test_nested():
+def test_manual_nested():
     class Model1(NamedTuple):
         a: int
 
@@ -88,3 +88,19 @@ def test_nested():
     schema2 = Schema2()
     assert schema2.load({'b': {'a': 1}}).data == Model2(Model1(1))
     assert schema2.dump(Model2(Model1(2))).data == {'b': {'a': 2}}
+
+
+def test_default_values():
+    class Model(NamedTuple):
+        a: Optional[int] = 5
+
+    class Schema(NamedTupleSchema):
+        class Meta:
+            namedtuple = Model
+            strict = True
+
+    schema = Schema()
+    assert schema.load({}).data == Model(5)
+    assert schema.load({'a': None}).data == Model(None)
+    assert schema.dump(Model(5)).data == {'a': 5}  # should this be {}
+    assert schema.dump(Model(None)).data == {'a': None}
