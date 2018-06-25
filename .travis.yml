@@ -1,7 +1,7 @@
 sudo: false
-cache: pip
 
 language: python
+cache: pip
 python:
   - "3.6"
   - "3.5"
@@ -9,6 +9,9 @@ python:
 env:
   - MARSHMALLOW_VERSION="==2.0.0"
   - MARSHMALLOW_VERSION=""
+
+before_install:
+  - pip install -U pip setuptools
 
 install:
   - travis_retry pip install -U .
