@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+import sys
 
 
 if sys.version_info < (3, 5):
