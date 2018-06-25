@@ -4,11 +4,11 @@ language: python
 cache: pip
 python:
   - "3.6"
-  - "3.5"
+  # - "3.5"
 
 env:
   - MARSHMALLOW_VERSION=">2.1,<3.0"
-  - MARSHMALLOW_VERSION=""
+  # - MARSHMALLOW_VERSION=""
 
 before_install:
   - pip install -U pip setuptools
