@@ -1,0 +1,7 @@
+flake8-bugbear==18.2.0
+flake8-commas==2.0.0
+flake8-comprehensions==1.4.1
+flake8-import-order==0.17.1
+flake8-mutable==1.2.0
+flake8==3.5.0
+pytest==3.6.2
